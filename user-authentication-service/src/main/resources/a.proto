@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option java_package = "com.globallogic.grpc";
+option java_multiple_files = true;
+
+service userAuthentication {
+  rpc registration(registrationMessage) returns(APIResponse);
+  rpc login(loginMessage) returns(APIResponse);
+  rpc logout(Empty) returns(APIResponse);
+  rpc forgotPassword(SendMail) returns(APIResponse);
+  rpc resetPassword(ChangePasswordRequest) returns(APIResponse);
+}
+
+message registrationMessage{
+  string userName = 1;
+  string emailId = 2;
+  string password = 3;
+  USER_TYPE userType = 4;
+}
+
+enum USER_TYPE{
+  CLIENT = 0;
+  ADMINISTRATIONS = 1;
+}
+
+message loginMessage{
+  string emailId = 1;
+  string userName=2;
+  string password = 3;
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+  string jwtResponse = 3;
+}
+
+message Empty{
+}
+
+message ChangePasswordRequest{
+  string emailId = 1;
+  string username = 2;
+  string password = 3;
+  int32 otp = 4;
+}
+
+message SendMail{
+  string emailId = 1;
+  string username = 2;
+}
