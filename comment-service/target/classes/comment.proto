@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "org.stackroute.commentDetails";
+
+service comment{
+  rpc commentAdd(commentAddMessage) returns(commentAddAPIResponse);
+  rpc commentUpdate(commentUpdateMessage) returns (commentUpdateAPIResponse);
+  rpc commentDelete(commentDeleteMessage) returns (commentDeleteAPIResponse);
+}
+
+message commentAddMessage{
+  int32 job_Id = 1;
+  int32 user_Id = 2;
+  string comment = 3;
+  string commentDate = 4;
+}
+message commentAddAPIResponse{
+  string responseMessage = 1;
+  int32  responseCode = 2;
+}
+message commentUpdateMessage{
+  int32 job_Id = 1;
+  int32 user_Id = 2;
+  string comment = 3;
+  string commentDate = 4;
+}
+message commentUpdateAPIResponse{
+  string responseMessage =1;
+  int32 responseCode =2;
+}
+message commentDeleteMessage{
+   int32 job_Id = 1;
+}
+message commentDeleteAPIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+

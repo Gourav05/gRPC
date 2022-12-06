@@ -17,7 +17,7 @@ public class Main {
         Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         logger.log(Level.INFO, "Comment Service ");
         logger.info("GRPC server started");
-        Server server = ServerBuilder.forPort(8094).addService(new CommentService()).build();
+        Server server = ServerBuilder.forPort(8099).addService(new CommentService()).build();
         server.start();
         logger.info("Server started on port number:"+server.getPort());
         server.awaitTermination();

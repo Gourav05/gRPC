@@ -1,0 +1,16 @@
+syntax ="proto3";
+option java_package="org.stackroute.grpc";
+service recommendation{
+  rpc recommend(recommendmessage)returns(APIresponse);
+
+}
+message recommendmessage{
+  int32 user_id=1;
+  int32 job_id=2;
+  string job_recommendation_title=3;
+  string job_recommendation_details=4;
+}
+message APIresponse{
+  string responsemessage=1;
+  int32 responsecode =2;
+}

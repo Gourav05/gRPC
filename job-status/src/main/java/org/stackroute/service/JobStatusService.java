@@ -33,9 +33,9 @@ public class JobStatusService extends statusGrpc.statusImplBase{
 
     public List<String> getStatusById(int applicationId){
         List<String> AllApplication = new ArrayList<>();
-        String url = "jdbc:postgresql://localhost:5432/flexwork";
+        String url = "jdbc:postgresql://localhost:5432/flexworkregister";
         String postgresUser = "postgres";
-        String postgresPassword = "niit";
+        String postgresPassword = "Global@900";
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(url, postgresUser, postgresPassword);
@@ -83,9 +83,9 @@ public class JobStatusService extends statusGrpc.statusImplBase{
     }
 
     public boolean updateStatusData(int jobApplicationId, String jobStatus){
-        String url = "jdbc:postgresql://localhost:5432/flexwork";
+        String url = "jdbc:postgresql://localhost:5432/flexworkregister";
         String postgresUser = "postgres";
-        String postgresPassword = "niit";
+        String postgresPassword = "Global@900";
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(url, postgresUser, postgresPassword);
