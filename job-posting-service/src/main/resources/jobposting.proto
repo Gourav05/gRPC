@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option java_package="org.stackroute.javastubs";
+
+service jobPosting {
+  rpc addPost(dataAdd) returns (APIResponse);
+  rpc updatePost (dataUpdate) returns (APIResponse);
+  rpc deletePost(dataDelete) returns (APIResponse);
+  rpc search(searchMessage) returns (searchAPIResponse);
+  rpc allJobId(empty) returns (jobIdResponse);
+}
+
+message empty{}
+
+message jobIdResponse{
+  repeated int32 jobId=1;
+}
+message searchMessage{
+  string jobTitle=1;
+}
+message searchAPIResponse{
+  int32 jobId = 1;
+  string jobTitle = 2;
+  string jobLocation = 3;
+  int32 experience = 4;
+  string qualification = 5;
+  int32 noticePeriod = 6;
+  string jobDescription = 7;
+  string postedDate = 8;
+  int32 postedBy = 9;
+}
+
+message dataAdd {
+  string jobTitle = 1;
+  string jobLocation = 2;
+  int32 experience = 3;
+  string qualification = 4;
+  int32 noticePeriod = 5;
+  string jobDescription = 6;
+  int32 postedBy = 7;
+
+}
+message dataUpdate{
+  int32 jobId = 1;
+  string jobTitle = 2;
+  string jobLocation = 3;
+  int32 experience = 4;
+  string qualification = 5;
+  int32 noticePeriod = 6;
+  string jobDescription = 7;
+  string postedDate = 8;
+  int32 postedBy = 9;
+}
+message dataDelete {
+  int32 jobId = 1;
+  int32 postedBy = 2;
+}
+
+message APIResponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}

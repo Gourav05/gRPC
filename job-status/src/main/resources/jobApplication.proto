@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "org.stackroute.jobApplication";
+
+service jobApplication{
+  rpc jobApplication(jobApplicationMessage) returns(ApplicationAPIResponse);
+  rpc applicationIdSearch(applicationIdSearchMessage) returns(ApplicationIdSearchResponse);
+  rpc allJobApplicationId(empty) returns(applicationIdResponse);
+}
+
+message jobApplicationMessage{
+  int32 jobId = 1;
+  int32 userId = 2;
+}
+
+message ApplicationAPIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+message applicationIdSearchMessage{
+  int32 application_id = 1;
+}
+
+message ApplicationIdSearchResponse{
+  int32 applicationId = 1;
+  int32 jobId = 2;
+  int32 userId = 3;
+
+  string responseMessage = 4;
+  int32 responseCode = 5;
+}
+
+message empty{
+}
+
+message applicationIdResponse{
+  repeated int32 jobApplicationId = 1;
+}

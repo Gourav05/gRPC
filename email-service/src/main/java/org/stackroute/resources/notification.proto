@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "org.stackroute.notification";
+
+service notification {
+  rpc registerNotification(notificationMessage) returns (APIResponse);
+}
+
+message notificationMessage{
+  string email = 1;
+  string name = 2;
+  string subject=3;
+  string message=4;
+}
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_package="org.stackroute";
+
+service jobPosting {
+  rpc addDatabase(data) returns (APIResponse);
+}
+
+message data {
+  int32 jobId = 1;
+  string jobTitle = 2;
+  string jobLocation = 3;
+  int32 experience = 4;
+  string qualification = 5;
+  int32 noticePeriod = 6;
+  string jobDescription = 7;
+  string postedBy = 8;
+
+}
+
+message APIResponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}

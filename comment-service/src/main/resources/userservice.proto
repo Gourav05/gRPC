@@ -1,0 +1,167 @@
+syntax = "proto3";
+
+option java_package = "org.stackroute.register";
+
+service userService {
+  rpc addUserDetails(adduser) returns (APIresponse);
+  rpc updateUser(updateRequest) returns (updateResponse);
+  rpc delete (deleteRequest) returns (deleteResponse);
+  rpc search(searchMessage) returns (searchAPIResponse);
+  rpc primaryskillSearch(requestMessage) returns (responseMessage);
+  rpc secondaryskillSearch(requestMessage1) returns (responseMessage1);
+  rpc userIDSearch(requestMessage2) returns (responseMessage2);
+  rpc designationSearch(requestMessage3) returns (responseMessage3);
+  rpc allUserId(empty) returns (userIdResponse);
+}
+
+message empty{
+}
+
+message userIdResponse{
+  repeated int32 userId=1;
+}
+
+message requestMessage {
+  string primarySkil=1;
+}
+message requestMessage1 {
+  string secondarySkill=1;
+}
+message requestMessage2 {
+  int32 userId=1;
+}
+message requestMessage3 {
+  string designation=1;
+}
+
+message searchMessage {
+  string userEmail=1;
+}
+message responseMessage {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+  string responseMessage = 12;
+  int32 responseCode = 13;
+}
+message responseMessage1 {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+  string responseMessage = 12;
+  int32 responseCode = 13;
+}
+message responseMessage2 {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+  string responseMessage = 12;
+  int32 responseCode = 13;
+}
+message responseMessage3 {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+  string responseMessage = 12;
+  int32 responseCode = 13;
+}
+
+message searchAPIResponse {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+  string responseMessage = 12;
+  int32 responseCode = 13;
+}
+
+
+message adduser{
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+}
+message APIresponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+
+message deleteRequest {
+  string emailId = 1;
+
+}
+
+message deleteResponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+
+message updateRequest {
+  string userName = 1;
+  string userEmail = 2;
+  int32 userId = 3; // delete this
+  string dob =4;
+  string gender =5;
+  string password =6;
+  string name =7;
+  int64 phone=8;
+  string designation=9;
+  string primarySkil=10; //list of primary skill
+  string secondarySkill=11;
+}
+
+message updateResponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+
+

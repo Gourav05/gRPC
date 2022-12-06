@@ -1,0 +1,43 @@
+syntax = "proto3";
+option  java_package = "org.stackroute.userAuthentication";
+option  java_multiple_files = true;
+
+service  userauth{
+
+  rpc userRegistration(adduser) returns (APIresponse);
+  rpc login(checkuser) returns (checkresponse);
+  rpc forgotPassword(request) returns (response);
+}
+message request{
+  string userEmail = 1;
+}
+message response{
+  int64 otp=1;
+ // string responseMessage = 2;
+}
+message adduser{
+//  string userName = 1;
+  string userEmail = 1;
+//  int32 userId = 3; // delete this
+//  string dob =4;
+//  string gender =5;
+  string password =2;
+//  string name =7;
+//  int64 phone=8;
+//  string designation=9;
+//  string primarySkil=10; //list of primary skill
+//  string secondarySkill=11;
+}
+message APIresponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+message checkuser {
+  string userEmail = 1;
+  string password =2;
+}
+
+message checkresponse {
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
