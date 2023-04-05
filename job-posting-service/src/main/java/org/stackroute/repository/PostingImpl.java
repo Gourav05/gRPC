@@ -19,7 +19,7 @@ public class PostingImpl implements Posting{
     }
 
     @Override
-    public void addPostInDatabase(int jobId, String jobTitle, String jobLocation, int experience, String qualification, int noticePeriod, String jobDescription,String postedDate, int postedBy) throws SQLException {
+    public void addPostInDatabase(int jobId, String jobTitle, String jobLocation, int experience, String qualification, int noticePeriod, String jobDescription,String postedDate, String postedBy) throws SQLException {
         String query = "insert into jobposting values (?,?,?,?,?,?,?,?,?)";
 
         try {
@@ -39,7 +39,7 @@ public class PostingImpl implements Posting{
             st.setInt(6, noticePeriod);
             st.setString(7, jobDescription);
             st.setString(8, postedDate);
-            st.setInt(9, postedBy);
+            st.setString(9, postedBy);
 
             int count = st.executeUpdate();
 
@@ -49,7 +49,8 @@ public class PostingImpl implements Posting{
     }
 
     @Override
-    public int updatePostInDatabase(String jobTitle, String jobLocation, int experience, String qualification, int noticePeriod, String jobDescription, String postedDate, int postedBy, int jobId) throws SQLException {
+    public void updatePostInDatabase(String jobTitle, String jobLocation, int experience, String qualification, int noticePeriod, String jobDescription, String postedDate, String postedBy, int jobId) throws SQLException {
+        try {
 
             if (con != null) {
                 System.out.println("Database has been connect !!");
@@ -62,7 +63,8 @@ public class PostingImpl implements Posting{
                     + ", noticePeriod = ?"
                     + ", jobDescription = ?"
                     + ", postedDate = ?"
-                    + "WHERE postedBy = ? and jobId = ?";
+                    + ", postedBy = ?"
+                    + "WHERE jobId = ?";
 
             assert con != null;
             PreparedStatement st = con.prepareStatement(query);
@@ -74,13 +76,14 @@ public class PostingImpl implements Posting{
             st.setInt(5, noticePeriod);
             st.setString(6, jobDescription);
             st.setString(7, postedDate);
-            st.setInt(8,postedBy);
+            st.setString(8,postedBy);
             st.setInt(9, jobId);
 
             int count = st.executeUpdate();
-            System.out.println(count);
 
-        return count;
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
     }
 
     @Override
@@ -114,6 +117,7 @@ public class PostingImpl implements Posting{
 
             ResultSet rs = prepareStatement.executeQuery();
             if(rs.next()) {
+                jobs.add(String.valueOf(rs.getInt("jobId")));
                 jobs.add(rs.getString("jobTitle"));
                 jobs.add(rs.getString("jobLocation"));
                 jobs.add(String.valueOf(rs.getInt("experience")));
@@ -121,8 +125,8 @@ public class PostingImpl implements Posting{
                 jobs.add(String.valueOf(rs.getInt("noticePeriod")));
                 jobs.add(rs.getString("jobDescription"));
                 jobs.add(rs.getString("postedDate"));
-                jobs.add(String.valueOf(rs.getInt("postedBy")));
-                jobs.add(String.valueOf(rs.getInt("jobId")));
+                jobs.add(rs.getString("postedBy"));
+                //jobs.add(String.valueOf(rs.getInt("jobId")));
             }
 
         } catch (SQLException e) {

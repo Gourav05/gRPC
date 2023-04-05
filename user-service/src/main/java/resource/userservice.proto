@@ -66,7 +66,7 @@ message searchMessage {
   string userEmail=1;
 }
 message rs {
-  string userName = 1;
+  //string userName = 1;
   string userEmail = 2;
   int32 userId = 3;
   string dob =4;

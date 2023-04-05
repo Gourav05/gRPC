@@ -27,7 +27,7 @@ message searchAPIResponse{
   int32 noticePeriod = 6;
   string jobDescription = 7;
   string postedDate = 8;
-  int32 postedBy = 9;
+  string postedBy = 9;
 }
 
 message dataAdd {
@@ -37,7 +37,7 @@ message dataAdd {
   string qualification = 4;
   int32 noticePeriod = 5;
   string jobDescription = 6;
-  int32 postedBy = 7;
+  string postedBy = 7;
 
 }
 message dataUpdate{
@@ -49,11 +49,11 @@ message dataUpdate{
   int32 noticePeriod = 6;
   string jobDescription = 7;
   string postedDate = 8;
-  int32 postedBy = 9;
+  string postedBy = 9;
 }
 message dataDelete {
   int32 jobId = 1;
-  int32 postedBy = 2;
+  string postedBy = 2;
 }
 
 message APIResponse {

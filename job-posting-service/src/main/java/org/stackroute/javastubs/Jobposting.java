@@ -1633,9 +1633,14 @@ public final class Jobposting {
         getPostedDateBytes();
 
     /**
-     * <code>int32 postedBy = 9;</code>
+     * <code>string postedBy = 9;</code>
      */
-    int getPostedBy();
+    java.lang.String getPostedBy();
+    /**
+     * <code>string postedBy = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getPostedByBytes();
   }
   /**
    * Protobuf type {@code searchAPIResponse}
@@ -1658,7 +1663,7 @@ public final class Jobposting {
       noticePeriod_ = 0;
       jobDescription_ = "";
       postedDate_ = "";
-      postedBy_ = 0;
+      postedBy_ = "";
     }
 
     @java.lang.Override
@@ -1730,9 +1735,10 @@ public final class Jobposting {
               postedDate_ = s;
               break;
             }
-            case 72: {
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              postedBy_ = input.readInt32();
+              postedBy_ = s;
               break;
             }
             default: {
@@ -1965,12 +1971,37 @@ public final class Jobposting {
     }
 
     public static final int POSTEDBY_FIELD_NUMBER = 9;
-    private int postedBy_;
+    private volatile java.lang.Object postedBy_;
     /**
-     * <code>int32 postedBy = 9;</code>
+     * <code>string postedBy = 9;</code>
      */
-    public int getPostedBy() {
-      return postedBy_;
+    public java.lang.String getPostedBy() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postedBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string postedBy = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPostedByBytes() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postedBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2011,8 +2042,8 @@ public final class Jobposting {
       if (!getPostedDateBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, postedDate_);
       }
-      if (postedBy_ != 0) {
-        output.writeInt32(9, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, postedBy_);
       }
       unknownFields.writeTo(output);
     }
@@ -2050,9 +2081,8 @@ public final class Jobposting {
       if (!getPostedDateBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, postedDate_);
       }
-      if (postedBy_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, postedBy_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2086,8 +2116,8 @@ public final class Jobposting {
           .equals(other.getJobDescription());
       result = result && getPostedDate()
           .equals(other.getPostedDate());
-      result = result && (getPostedBy()
-          == other.getPostedBy());
+      result = result && getPostedBy()
+          .equals(other.getPostedBy());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2116,7 +2146,7 @@ public final class Jobposting {
       hash = (37 * hash) + POSTEDDATE_FIELD_NUMBER;
       hash = (53 * hash) + getPostedDate().hashCode();
       hash = (37 * hash) + POSTEDBY_FIELD_NUMBER;
-      hash = (53 * hash) + getPostedBy();
+      hash = (53 * hash) + getPostedBy().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2266,7 +2296,7 @@ public final class Jobposting {
 
         postedDate_ = "";
 
-        postedBy_ = 0;
+        postedBy_ = "";
 
         return this;
       }
@@ -2380,8 +2410,9 @@ public final class Jobposting {
           postedDate_ = other.postedDate_;
           onChanged();
         }
-        if (other.getPostedBy() != 0) {
-          setPostedBy(other.getPostedBy());
+        if (!other.getPostedBy().isEmpty()) {
+          postedBy_ = other.postedBy_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2835,28 +2866,71 @@ public final class Jobposting {
         return this;
       }
 
-      private int postedBy_ ;
+      private java.lang.Object postedBy_ = "";
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
-      public int getPostedBy() {
-        return postedBy_;
+      public java.lang.String getPostedBy() {
+        java.lang.Object ref = postedBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          postedBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
-      public Builder setPostedBy(int value) {
-        
+      public com.google.protobuf.ByteString
+          getPostedByBytes() {
+        java.lang.Object ref = postedBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          postedBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string postedBy = 9;</code>
+       */
+      public Builder setPostedBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         postedBy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
       public Builder clearPostedBy() {
         
-        postedBy_ = 0;
+        postedBy_ = getDefaultInstance().getPostedBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string postedBy = 9;</code>
+       */
+      public Builder setPostedByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        postedBy_ = value;
         onChanged();
         return this;
       }
@@ -2968,9 +3042,14 @@ public final class Jobposting {
         getJobDescriptionBytes();
 
     /**
-     * <code>int32 postedBy = 7;</code>
+     * <code>string postedBy = 7;</code>
      */
-    int getPostedBy();
+    java.lang.String getPostedBy();
+    /**
+     * <code>string postedBy = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getPostedByBytes();
   }
   /**
    * Protobuf type {@code dataAdd}
@@ -2991,7 +3070,7 @@ public final class Jobposting {
       qualification_ = "";
       noticePeriod_ = 0;
       jobDescription_ = "";
-      postedBy_ = 0;
+      postedBy_ = "";
     }
 
     @java.lang.Override
@@ -3052,9 +3131,10 @@ public final class Jobposting {
               jobDescription_ = s;
               break;
             }
-            case 56: {
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              postedBy_ = input.readInt32();
+              postedBy_ = s;
               break;
             }
             default: {
@@ -3244,12 +3324,37 @@ public final class Jobposting {
     }
 
     public static final int POSTEDBY_FIELD_NUMBER = 7;
-    private int postedBy_;
+    private volatile java.lang.Object postedBy_;
     /**
-     * <code>int32 postedBy = 7;</code>
+     * <code>string postedBy = 7;</code>
      */
-    public int getPostedBy() {
-      return postedBy_;
+    public java.lang.String getPostedBy() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postedBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string postedBy = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPostedByBytes() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postedBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3284,8 +3389,8 @@ public final class Jobposting {
       if (!getJobDescriptionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, jobDescription_);
       }
-      if (postedBy_ != 0) {
-        output.writeInt32(7, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, postedBy_);
       }
       unknownFields.writeTo(output);
     }
@@ -3316,9 +3421,8 @@ public final class Jobposting {
       if (!getJobDescriptionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, jobDescription_);
       }
-      if (postedBy_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, postedBy_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3348,8 +3452,8 @@ public final class Jobposting {
           == other.getNoticePeriod());
       result = result && getJobDescription()
           .equals(other.getJobDescription());
-      result = result && (getPostedBy()
-          == other.getPostedBy());
+      result = result && getPostedBy()
+          .equals(other.getPostedBy());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -3374,7 +3478,7 @@ public final class Jobposting {
       hash = (37 * hash) + JOBDESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getJobDescription().hashCode();
       hash = (37 * hash) + POSTEDBY_FIELD_NUMBER;
-      hash = (53 * hash) + getPostedBy();
+      hash = (53 * hash) + getPostedBy().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3520,7 +3624,7 @@ public final class Jobposting {
 
         jobDescription_ = "";
 
-        postedBy_ = 0;
+        postedBy_ = "";
 
         return this;
       }
@@ -3625,8 +3729,9 @@ public final class Jobposting {
           jobDescription_ = other.jobDescription_;
           onChanged();
         }
-        if (other.getPostedBy() != 0) {
-          setPostedBy(other.getPostedBy());
+        if (!other.getPostedBy().isEmpty()) {
+          postedBy_ = other.postedBy_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3985,28 +4090,71 @@ public final class Jobposting {
         return this;
       }
 
-      private int postedBy_ ;
+      private java.lang.Object postedBy_ = "";
       /**
-       * <code>int32 postedBy = 7;</code>
+       * <code>string postedBy = 7;</code>
        */
-      public int getPostedBy() {
-        return postedBy_;
+      public java.lang.String getPostedBy() {
+        java.lang.Object ref = postedBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          postedBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 postedBy = 7;</code>
+       * <code>string postedBy = 7;</code>
        */
-      public Builder setPostedBy(int value) {
-        
+      public com.google.protobuf.ByteString
+          getPostedByBytes() {
+        java.lang.Object ref = postedBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          postedBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string postedBy = 7;</code>
+       */
+      public Builder setPostedBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         postedBy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 postedBy = 7;</code>
+       * <code>string postedBy = 7;</code>
        */
       public Builder clearPostedBy() {
         
-        postedBy_ = 0;
+        postedBy_ = getDefaultInstance().getPostedBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string postedBy = 7;</code>
+       */
+      public Builder setPostedByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        postedBy_ = value;
         onChanged();
         return this;
       }
@@ -4133,9 +4281,14 @@ public final class Jobposting {
         getPostedDateBytes();
 
     /**
-     * <code>int32 postedBy = 9;</code>
+     * <code>string postedBy = 9;</code>
      */
-    int getPostedBy();
+    java.lang.String getPostedBy();
+    /**
+     * <code>string postedBy = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getPostedByBytes();
   }
   /**
    * Protobuf type {@code dataUpdate}
@@ -4158,7 +4311,7 @@ public final class Jobposting {
       noticePeriod_ = 0;
       jobDescription_ = "";
       postedDate_ = "";
-      postedBy_ = 0;
+      postedBy_ = "";
     }
 
     @java.lang.Override
@@ -4230,9 +4383,10 @@ public final class Jobposting {
               postedDate_ = s;
               break;
             }
-            case 72: {
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              postedBy_ = input.readInt32();
+              postedBy_ = s;
               break;
             }
             default: {
@@ -4465,12 +4619,37 @@ public final class Jobposting {
     }
 
     public static final int POSTEDBY_FIELD_NUMBER = 9;
-    private int postedBy_;
+    private volatile java.lang.Object postedBy_;
     /**
-     * <code>int32 postedBy = 9;</code>
+     * <code>string postedBy = 9;</code>
      */
-    public int getPostedBy() {
-      return postedBy_;
+    public java.lang.String getPostedBy() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postedBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string postedBy = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPostedByBytes() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postedBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4511,8 +4690,8 @@ public final class Jobposting {
       if (!getPostedDateBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, postedDate_);
       }
-      if (postedBy_ != 0) {
-        output.writeInt32(9, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, postedBy_);
       }
       unknownFields.writeTo(output);
     }
@@ -4550,9 +4729,8 @@ public final class Jobposting {
       if (!getPostedDateBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, postedDate_);
       }
-      if (postedBy_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, postedBy_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4586,8 +4764,8 @@ public final class Jobposting {
           .equals(other.getJobDescription());
       result = result && getPostedDate()
           .equals(other.getPostedDate());
-      result = result && (getPostedBy()
-          == other.getPostedBy());
+      result = result && getPostedBy()
+          .equals(other.getPostedBy());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -4616,7 +4794,7 @@ public final class Jobposting {
       hash = (37 * hash) + POSTEDDATE_FIELD_NUMBER;
       hash = (53 * hash) + getPostedDate().hashCode();
       hash = (37 * hash) + POSTEDBY_FIELD_NUMBER;
-      hash = (53 * hash) + getPostedBy();
+      hash = (53 * hash) + getPostedBy().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4766,7 +4944,7 @@ public final class Jobposting {
 
         postedDate_ = "";
 
-        postedBy_ = 0;
+        postedBy_ = "";
 
         return this;
       }
@@ -4880,8 +5058,9 @@ public final class Jobposting {
           postedDate_ = other.postedDate_;
           onChanged();
         }
-        if (other.getPostedBy() != 0) {
-          setPostedBy(other.getPostedBy());
+        if (!other.getPostedBy().isEmpty()) {
+          postedBy_ = other.postedBy_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5335,28 +5514,71 @@ public final class Jobposting {
         return this;
       }
 
-      private int postedBy_ ;
+      private java.lang.Object postedBy_ = "";
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
-      public int getPostedBy() {
-        return postedBy_;
+      public java.lang.String getPostedBy() {
+        java.lang.Object ref = postedBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          postedBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
-      public Builder setPostedBy(int value) {
-        
+      public com.google.protobuf.ByteString
+          getPostedByBytes() {
+        java.lang.Object ref = postedBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          postedBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string postedBy = 9;</code>
+       */
+      public Builder setPostedBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         postedBy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 postedBy = 9;</code>
+       * <code>string postedBy = 9;</code>
        */
       public Builder clearPostedBy() {
         
-        postedBy_ = 0;
+        postedBy_ = getDefaultInstance().getPostedBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string postedBy = 9;</code>
+       */
+      public Builder setPostedByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        postedBy_ = value;
         onChanged();
         return this;
       }
@@ -5423,9 +5645,14 @@ public final class Jobposting {
     int getJobId();
 
     /**
-     * <code>int32 postedBy = 2;</code>
+     * <code>string postedBy = 2;</code>
      */
-    int getPostedBy();
+    java.lang.String getPostedBy();
+    /**
+     * <code>string postedBy = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPostedByBytes();
   }
   /**
    * Protobuf type {@code dataDelete}
@@ -5441,7 +5668,7 @@ public final class Jobposting {
     }
     private dataDelete() {
       jobId_ = 0;
-      postedBy_ = 0;
+      postedBy_ = "";
     }
 
     @java.lang.Override
@@ -5473,9 +5700,10 @@ public final class Jobposting {
               jobId_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              postedBy_ = input.readInt32();
+              postedBy_ = s;
               break;
             }
             default: {
@@ -5520,12 +5748,37 @@ public final class Jobposting {
     }
 
     public static final int POSTEDBY_FIELD_NUMBER = 2;
-    private int postedBy_;
+    private volatile java.lang.Object postedBy_;
     /**
-     * <code>int32 postedBy = 2;</code>
+     * <code>string postedBy = 2;</code>
      */
-    public int getPostedBy() {
-      return postedBy_;
+    public java.lang.String getPostedBy() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postedBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string postedBy = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPostedByBytes() {
+      java.lang.Object ref = postedBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postedBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5545,8 +5798,8 @@ public final class Jobposting {
       if (jobId_ != 0) {
         output.writeInt32(1, jobId_);
       }
-      if (postedBy_ != 0) {
-        output.writeInt32(2, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, postedBy_);
       }
       unknownFields.writeTo(output);
     }
@@ -5561,9 +5814,8 @@ public final class Jobposting {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, jobId_);
       }
-      if (postedBy_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, postedBy_);
+      if (!getPostedByBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, postedBy_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5583,8 +5835,8 @@ public final class Jobposting {
       boolean result = true;
       result = result && (getJobId()
           == other.getJobId());
-      result = result && (getPostedBy()
-          == other.getPostedBy());
+      result = result && getPostedBy()
+          .equals(other.getPostedBy());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5599,7 +5851,7 @@ public final class Jobposting {
       hash = (37 * hash) + JOBID_FIELD_NUMBER;
       hash = (53 * hash) + getJobId();
       hash = (37 * hash) + POSTEDBY_FIELD_NUMBER;
-      hash = (53 * hash) + getPostedBy();
+      hash = (53 * hash) + getPostedBy().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5735,7 +5987,7 @@ public final class Jobposting {
         super.clear();
         jobId_ = 0;
 
-        postedBy_ = 0;
+        postedBy_ = "";
 
         return this;
       }
@@ -5816,8 +6068,9 @@ public final class Jobposting {
         if (other.getJobId() != 0) {
           setJobId(other.getJobId());
         }
-        if (other.getPostedBy() != 0) {
-          setPostedBy(other.getPostedBy());
+        if (!other.getPostedBy().isEmpty()) {
+          postedBy_ = other.postedBy_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5874,28 +6127,71 @@ public final class Jobposting {
         return this;
       }
 
-      private int postedBy_ ;
+      private java.lang.Object postedBy_ = "";
       /**
-       * <code>int32 postedBy = 2;</code>
+       * <code>string postedBy = 2;</code>
        */
-      public int getPostedBy() {
-        return postedBy_;
+      public java.lang.String getPostedBy() {
+        java.lang.Object ref = postedBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          postedBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 postedBy = 2;</code>
+       * <code>string postedBy = 2;</code>
        */
-      public Builder setPostedBy(int value) {
-        
+      public com.google.protobuf.ByteString
+          getPostedByBytes() {
+        java.lang.Object ref = postedBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          postedBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string postedBy = 2;</code>
+       */
+      public Builder setPostedBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         postedBy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 postedBy = 2;</code>
+       * <code>string postedBy = 2;</code>
        */
       public Builder clearPostedBy() {
         
-        postedBy_ = 0;
+        postedBy_ = getDefaultInstance().getPostedBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string postedBy = 2;</code>
+       */
+      public Builder setPostedByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        postedBy_ = value;
         onChanged();
         return this;
       }
@@ -6621,17 +6917,17 @@ public final class Jobposting {
       "tion\030\003 \001(\t\022\022\n\nexperience\030\004 \001(\005\022\025\n\rqualif" +
       "ication\030\005 \001(\t\022\024\n\014noticePeriod\030\006 \001(\005\022\026\n\016j" +
       "obDescription\030\007 \001(\t\022\022\n\npostedDate\030\010 \001(\t\022" +
-      "\020\n\010postedBy\030\t \001(\005\"\233\001\n\007dataAdd\022\020\n\010jobTitl" +
+      "\020\n\010postedBy\030\t \001(\t\"\233\001\n\007dataAdd\022\020\n\010jobTitl" +
       "e\030\001 \001(\t\022\023\n\013jobLocation\030\002 \001(\t\022\022\n\nexperien" +
       "ce\030\003 \001(\005\022\025\n\rqualification\030\004 \001(\t\022\024\n\014notic" +
       "ePeriod\030\005 \001(\005\022\026\n\016jobDescription\030\006 \001(\t\022\020\n" +
-      "\010postedBy\030\007 \001(\005\"\301\001\n\ndataUpdate\022\r\n\005jobId\030" +
+      "\010postedBy\030\007 \001(\t\"\301\001\n\ndataUpdate\022\r\n\005jobId\030" +
       "\001 \001(\005\022\020\n\010jobTitle\030\002 \001(\t\022\023\n\013jobLocation\030\003" +
       " \001(\t\022\022\n\nexperience\030\004 \001(\005\022\025\n\rqualificatio" +
       "n\030\005 \001(\t\022\024\n\014noticePeriod\030\006 \001(\005\022\026\n\016jobDesc" +
       "ription\030\007 \001(\t\022\022\n\npostedDate\030\010 \001(\t\022\020\n\010pos" +
-      "tedBy\030\t \001(\005\"-\n\ndataDelete\022\r\n\005jobId\030\001 \001(\005" +
-      "\022\020\n\010postedBy\030\002 \001(\005\"<\n\013APIResponse\022\027\n\017res" +
+      "tedBy\030\t \001(\t\"-\n\ndataDelete\022\r\n\005jobId\030\001 \001(\005" +
+      "\022\020\n\010postedBy\030\002 \001(\t\"<\n\013APIResponse\022\027\n\017res" +
       "ponseMessage\030\001 \001(\t\022\024\n\014responseCode\030\002 \001(\005" +
       "2\323\001\n\njobPosting\022!\n\007addPost\022\010.dataAdd\032\014.A" +
       "PIResponse\022\'\n\nupdatePost\022\013.dataUpdate\032\014." +

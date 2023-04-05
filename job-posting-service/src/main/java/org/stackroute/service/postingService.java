@@ -41,29 +41,29 @@ public class postingService extends jobPostingGrpc.jobPostingImplBase{
 
     @Override
     public void search(Jobposting.searchMessage request, StreamObserver<Jobposting.searchAPIResponse> responseObserver) {
-        super.search(request, responseObserver);
+
         String jobTile = request.getJobTitle();
         List<String> jobs= postObj.getJobByTitle(jobTile);
         Jobposting.searchAPIResponse.Builder jobRes = Jobposting.searchAPIResponse.newBuilder();
         if(!jobs.isEmpty()){
 
-            jobRes.setJobTitle(jobs.get(0))
-                    .setJobLocation(jobs.get(1))
-                    .setExperience(Integer.parseInt(jobs.get(2)))
-                    .setQualification(jobs.get(3))
-                    .setNoticePeriod(Integer.parseInt(jobs.get(4)))
-                    .setJobDescription(jobs.get(5))
-                    .setPostedDate(jobs.get(6))
-                    .setPostedBy(Integer.parseInt(jobs.get(7)))
-                    .setJobId(Integer.parseInt(jobs.get(8)));
+            jobRes.setJobId(Integer.parseInt(jobs.get(0)))
+                    .setJobTitle(jobs.get(1))
+                    .setJobLocation(jobs.get(2))
+                    .setExperience(Integer.parseInt(jobs.get(3)))
+                    .setQualification(jobs.get(4))
+                    .setNoticePeriod(Integer.parseInt(jobs.get(5)))
+                    .setJobDescription(jobs.get(6))
+                    .setPostedDate(jobs.get(7))
+                    .setPostedBy(jobs.get(8));
 
-            int i = 0;
-            while (i <jobs.size())
-            {
-                System.out.println(jobs.get(i));
-                i++;
-            }
+//
         }
+//        else {
+//            jobRes.build();
+//        }
+        responseObserver.onNext(jobRes.build());
+        responseObserver.onCompleted();
     }
 
     @Override
@@ -80,7 +80,7 @@ public class postingService extends jobPostingGrpc.jobPostingImplBase{
         int noticePeriod = request.getNoticePeriod();
         String jobDescription = request.getJobDescription();
         String postedDate = java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/YYYY")).toString();
-        int postedBy = request.getPostedBy();
+        String postedBy = request.getPostedBy();
 
 
         System.out.println("JobId:" + jobId);
@@ -89,10 +89,10 @@ public class postingService extends jobPostingGrpc.jobPostingImplBase{
 
         Jobposting.APIResponse.Builder response = Jobposting.APIResponse.newBuilder();
 
-        boolean validateUser = validateUser(postedBy);
+        boolean validateUser = validateUser(Integer.parseInt(postedBy));
         if (validateUser) {
             postObj.addPostInDatabase(jobId, jobTitle, jobLocation, experience, qualification, noticePeriod, jobDescription, postedDate, postedBy);
-            response.setResponseMessage("Congratulations User -> "+ postedBy +" Your Post is on Air  and your jobID is -> "+ jobId).setResponseCode(200);
+            response.setResponseMessage("Congratulations Your Post is on Air").setResponseCode(200);
         } else {
             response.setResponseMessage("Please Signup First").setResponseCode(404);
         }
@@ -120,22 +120,17 @@ public class postingService extends jobPostingGrpc.jobPostingImplBase{
         int noticePeriod = request.getNoticePeriod();
         String jobDescription = request.getJobDescription();
         String postedDate = request.getPostedDate();
-        int postedBy = request.getPostedBy();
+        String postedBy = request.getPostedBy();
 
         System.out.println("JobId:" + jobId);
         System.out.println("jobTitle:" + jobTitle);
 
         Jobposting.APIResponse.Builder response = Jobposting.APIResponse.newBuilder();
 
-        boolean validateUser = validateUser(postedBy);
+        boolean validateUser = validateUser(Integer.parseInt(postedBy));
         if (validateUser) {
-            int value = postObj.updatePostInDatabase(jobTitle, jobLocation, experience, qualification, noticePeriod, jobDescription, postedDate, postedBy, jobId);
-            if(value == 1){
-            response.setResponseMessage(postedBy + " - Your post has been Updated !!").setResponseCode(200);
-            }
-            else{
-                response.setResponseMessage("Post does not exists for given user ID!").setResponseCode(404);
-            }
+            postObj.updatePostInDatabase(jobTitle, jobLocation, experience, qualification, noticePeriod, jobDescription, postedDate, postedBy, jobId);
+            response.setResponseMessage("Post is Updated !!").setResponseCode(200);
         } else {
             response.setResponseMessage("Please Signup First").setResponseCode(404);
         }
@@ -155,19 +150,19 @@ public class postingService extends jobPostingGrpc.jobPostingImplBase{
             System.out.println("Inside deletePost method");
 
             int jobId = request.getJobId();
-            int postedBy = request.getPostedBy();
+            String postedBy = request.getPostedBy();
             System.out.println("JobId:" + jobId);
 
 
             Jobposting.APIResponse.Builder response = Jobposting.APIResponse.newBuilder();
-            boolean validateUser = validateUser(postedBy);
+            boolean validateUser = validateUser(Integer.parseInt(postedBy));
             if (validateUser) {
-                int value = postObj.deletePostFromDatabase(jobId, postedBy);
+                int value = postObj.deletePostFromDatabase(jobId, Integer.parseInt(postedBy));
                 if(value == 1){
-                    response.setResponseMessage("Post has been Deleted !!").setResponseCode(200);
+                    response.setResponseMessage("Post is Deleted !!").setResponseCode(200);
                 }
                 else{
-                    response.setResponseMessage("Post does not exists for given user ID!").setResponseCode(404);
+                    response.setResponseMessage("Please Enter right User Entry !!").setResponseCode(404);
                 }
 
 

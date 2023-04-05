@@ -19,10 +19,14 @@ public class Database
 //        } catch (ClassNotFoundException e) {
 //            e.printStackTrace();
 //        }
-
         Connection connection;
-        connection=DriverManager.getConnection(url,user,password);
-        return connection;
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection=DriverManager.getConnection(url,user,password);
+            return connection;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -9,6 +9,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.Random;
 
+import java.security.Key;
+
 public class AuthService extends userauthGrpc.userauthImplBase{
     UserRepoImpl authRepo = new UserRepoImpl();
     @Override
@@ -47,6 +49,7 @@ public class AuthService extends userauthGrpc.userauthImplBase{
         }
         else {
             check.setResponseMessage("welcome "+userEmail).setResponseCode(202);
+
         }
 
         responseObserver.onNext(check.build());

@@ -53,6 +53,9 @@ public class recommendationservice extends recommendationGrpc.recommendationImpl
         String recipient=apirm.getUserEmail();
         String msg="This Job is recommended for you";
 
+        System.out.println(details);
+        System.out.println(apirm.getPrimarySkil());
+
         if (details.contains(apirm.getPrimarySkil()) && title.contains(apirm.getPrimarySkil())){
             properties.put("mail.smtp.host",host);
             properties.put("mail.smtp.port","465");
